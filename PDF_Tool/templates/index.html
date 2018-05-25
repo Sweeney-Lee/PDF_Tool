@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funcitions</title>
+</head>
+<style>
+body{
+    background-color: #eeeeee;
+}
+h1{
+	font-size: 55px;
+}
+h2{
+	font-size: 25px;
+	color: black;
+
+}
+h2:hover{
+	font-size: 30px;
+	color: red;
+}
+</style>
+<body>
+    <center>
+        <table>
+            <tr>
+              <center><th colspan="3"><h1><B>PDF Tool</B></h1></th></center>
+            </tr>
+            <tr>
+                <td><button id="tools_1" style="height:100px; width:300px;border:1px solid #FF9933 ; background-color:#AEEEEE;"><h2>Merge</h2></button></td>
+                <td><button id="tools_4" style="height:100px; width:300px;border:1px solid #FF9933 ; background-color:#AEEEEE;"><h2>Cut</h2></button></td>
+            </tr>
+            <tr>
+                <td><button id="tools_2" style="height:100px; width:300px;border:1px solid #FF9933 ; background-color:#AEEEEE;"><h2>Encrypt</h2></button></td>
+                <td><button id="tools_3" style="height:100px; width:300px;border:1px solid #FF9933 ; background-color:#AEEEEE;"><h2>Remove Encryption</h2></button></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><button id="tools_5" style="height:100px; width:600px;border:1px solid #FF9933 ; background-color:#AEEEEE;"><h2>Add Watermark</h2></button></td>
+            </tr>
+
+        </table>
+    </center>
+</body>
+<script>
+    tools_1.onclick = function () {
+        window.location.href = "/Merge/"
+    }
+    tools_2.onclick = function () {
+        window.location.href = "/Encrypt/"
+    }
+    tools_3.onclick = function () {
+        window.location.href = "/Decrypt/"
+    }
+    tools_4.onclick = function () {
+        window.location.href = "/Cut/"
+    }
+    tools_5.onclick = function () {
+        window.location.href = "/Add_Watermark/"
+    }
+</script>
+</html>

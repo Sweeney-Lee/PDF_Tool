@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<style type="text/css">
+input{
+    border: 1px solid #ccc;
+    padding: 7px 0px;
+    border-radius: 3px;
+    padding-left:5px;
+    padding-right:5px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+input:focus{
+        border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+*{margin:0;padding:0}
+html{font: 30px/60px Verdana, Geneva, Arial, Helvetica, sans-serif;background: aliceblue}
+
+.countainer{
+margin:auto;
+width:600px;
+height:100px;
+background-color: lightsteelblue;
+}
+
+body{
+font-size: 12px;
+text-align: center;
+}
+
+.u-btn-selectfile{
+background: #eee;
+border: none;
+/*color: #ffffff;*/
+font-weight: bold;
+}
+.u-btn-selectfile:focus{
+outline: 0;
+}
+.u-btn-selectfile span{
+position: relative;
+top: -3px;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Merge the PDF</title>
+</head>
+<body>
+<a href="/">Return index</a><br>
+
+        {{ error }}
+        <form enctype="multipart/form-data"  method="POST" accept="application/pdf" >
+             {% csrf_token %}
+            <table class="countainer" border="8" cellspacing="10" align="center">
+            <tr>
+                <td><h1>Merge the PDF</h1></td>
+            </tr>
+            <tr>
+                <td><h6>Please input the PDFs you want to merge. The name should not have Chinese!</h6></td>
+            </tr>
+            <tr>
+                <td>
+                <span>Input PDFs：</span>
+                <input type="text" size="20" name="upfile1" id="file1" class="u-input-version"/>
+                <button type="button" onclick="path1.click()" class="u-btn-selectfile">
+                  <span>...</span>
+                  </button>
+                    <input type="file" multiple="multiple" name="files" id="path1" style="display:none" onchange="upfile1.value=this.value"/>
+            </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><h6>Please input the name of result in English or number.The name should not have Chinese!</h6></td>
+            </tr>
+            <tr>
+                <td>Output PDF:<input type="text" name="result" value="result.pdf"><br /></td>
+            </tr>
+            <tr>
+                <td><input  type="submit" value="Submit"></td>
+            </tr>
+
+        </table>
+</form>
+
+</body>
+</html>
+<script>
+    window.onload = function(){
+var fileUploader = document.getElementById('FileUploader');
+var pathDisplayer = document.getElementById('PathDisplayer');
+if(fileUploader.addEventListener){
+fileUploader.addEventListener('change', fileUploaderChangeHandler, false);
+}else if(fileUploader.attachEvent){
+fileUploader.attachEvent('onclick', fileUploaderClickHandler);
+}else{
+fileUploader.onchange = fileUploaderChangeHandler;
+}
+function fileUploaderChangeHandler(){
+pathDisplayer.value = fileUploader.value;
+}
+function fileUploaderClickHandler(){
+setTimeout(function(){
+fileUploaderChangeHandler();
+}, 0);
+}
+}
+</script>
